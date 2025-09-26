@@ -225,9 +225,9 @@ It includes:
 
 `3. .env`
 
-AZURE_STORAGE_NAME=your_storage_account
-AZURE_STORAGE_KEY=your_storage_key
-AZURE_STORAGE_CONTAINER=your_container_name
+- AZURE_STORAGE_NAME=your_storage_account
+- AZURE_STORAGE_KEY=your_storage_key
+- AZURE_STORAGE_CONTAINER=your_container_name
 
 
 
