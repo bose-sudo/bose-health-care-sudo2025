@@ -18,7 +18,24 @@ It includes:
 
 `http://127.0.0.1:8000/login`
 
+---
 
+### Admin Login cradential
+
+`email - admin@example.com`
+`password - password`
+
+`email - crm@example.com`
+`password - password`
+
+`email - patient@example.com`
+`password - password`
+
+`email - doctor@example.com`
+`password - password`
+
+`email - lab@example.com`
+`password - password`
 
 ---
 
@@ -28,7 +45,7 @@ It includes:
 
 `(POST) http://127.0.0.1:8000/api/patients`
 
-- **Body:**
+- **Body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -46,7 +63,6 @@ It includes:
 }
 ```
 
-## GET
 
 `(GET) http://127.0.0.1:8000/api/patients`
 
@@ -61,7 +77,7 @@ It includes:
 
 `(GET) http://127.0.0.1:8000/api/patients?q=9876221210 //q= [phone_number / firstname / last_name]`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -71,7 +87,7 @@ It includes:
 
 `( PUT / PATCH ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -82,7 +98,7 @@ It includes:
 
 `( DELETE ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -94,7 +110,7 @@ It includes:
 
 `( POST ) http://127.0.0.1:8000/api/appointments`
 
-**body**
+- **body**
 ```js
 {
   "email": "admin@example.com",
@@ -110,7 +126,7 @@ It includes:
 
 `( GET ) http://127.0.0.1:8000/api/appointments`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -121,7 +137,7 @@ It includes:
 
 `( GET ) http://127.0.0.1:8000/api/appointments/patient/P001`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -142,7 +158,7 @@ It includes:
 
 `( GET ) http://127.0.0.1:8000/api/appointments/doctor/D001`
 
-**body**
+- **body**
 ```js
 {
   "email": "crm@example.com",       // login email
@@ -156,7 +172,7 @@ It includes:
 ```
 
 `( PUT ) http://127.0.0.1:8000/api/appointments/2`
-**body**
+- **body**
 ```js
 {
   "email": "doctor@example.com",       // login email
@@ -166,7 +182,7 @@ It includes:
 
 
 `( DELETE ) http://127.0.0.1:8000/api/appointments/2`
-**body**
+- **body**
 ```js
 {
   "email": "doctor@example.com",       // login email
@@ -178,7 +194,7 @@ It includes:
 
 `http://127.0.0.1:8000/api/patients/P-DAQA/audits`
 
-**body**
+- **body**
 ```js
 
 {
@@ -186,11 +202,12 @@ It includes:
   "password": "password"         // login password
 }
 ```
+---
 
 ## Requirements
 - PHP >= 8.1
 - Composer
-- MySQL or MariaDB
+- MySQL
 - Node.js & npm (for assets if needed)
 
 ---
