@@ -24,14 +24,11 @@ It includes:
 
 ## API Endpoints
 
-php artisan migrate
-php artisan db:seed --class=UserSeeder
-
-`##task 2::Patient Management`
+## task 2::Patient Management
 
 `(POST) http://127.0.0.1:8000/api/patients`
 
-body::
+- **Body:**
 ```json
 {
   "email": "crm@example.com",       // login email
@@ -47,12 +44,15 @@ body::
   "emergency_contact_phone": "9876500000",
   "insurance_details": "policy_number INS12345 provider ABC Insurance"
 }
--------------------------------------------------
+** ```
+
+## GET
 
 `(GET) http://127.0.0.1:8000/api/patients`
 
 
-body::
+- **Body:**
+```json
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
