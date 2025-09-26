@@ -210,6 +210,9 @@ It includes:
 ## Task 5: Azure Deployment Knowledge & Documentation
 
 `1.`
+`Before deploying to Microsoft Azure, some Laravel configurations need to be adjusted`
+
+ APP_ENV=production
 
 `Database (Azure SQL / MySQL)`
 
