@@ -1,66 +1,212 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Patient Management CRM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Overview
+This is a simple Patient Management CRM built with **Laravel 11**.  
+It includes:
+- Patient CRUD operations
+- User authentication with roles (Admin, CRM Agent)
+- Audit trail for patient records
+- API endpoints with Postman collection
+- Simple UI using AdminLTE theme
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Live Application
+- You can access the live application at: 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+`http://127.0.0.1:8000/admin/dashboard`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+`http://127.0.0.1:8000/login`
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## API Endpoints
 
-## Laravel Sponsors
+php artisan migrate
+php artisan db:seed --class=UserSeeder
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+`##task 2::Patient Management`
 
-### Premium Partners
+`(POST) http://127.0.0.1:8000/api/patients`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+  "first_name": "John",
+  "last_name": "Doe",
+  "date_of_birth": "1990-05-15",
+  "gender": "Male",
+  "phone_number": "9876221210",
+  "patient_email": "john.doe@example.com",
+  "address": "123 Street, City",
+  "emergency_contact_name": "Jane Doe",
+  "emergency_contact_phone": "9876500000",
+  "insurance_details": "policy_number INS12345 provider ABC Insurance"
+}
+-------------------------------------------------
 
-## Contributing
+`(GET) http://127.0.0.1:8000/api/patients`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+----------------------------------------------------
 
-## Security Vulnerabilities
+`(GET) http://127.0.0.1:8000/api/patients?q=9876221210 //q= [phone_number / firstname / last_name]`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
+-----------------------------------------------------
 
-## License
+`( PUT / PATCH ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+  "address": "458 Street, City",
+}
+------------------------------------------------------
+
+`( DELETE ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
+
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
+-------------------------------------------------------
+
+`##Task3: Appointment Scheduling`
+
+`( POST ) http://127.0.0.1:8000/api/appointments`
+
+body::
+{
+  "email": "admin@example.com",
+  "password": "password",
+  "patient_id": 1,
+  "doctor_id": 1,
+  "appointment_date": "2025-09-28",
+  "appointment_time": "10:30:00",
+  "notes": "First appointment for checkup"
+}
+
+--------------------------------------------------------
+
+`( GET ) http://127.0.0.1:8000/api/appointments`
+
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
+
+--------------------------------------------------------
+
+`( GET ) http://127.0.0.1:8000/api/appointments/patient/P001`
+
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
+
+{
+  "email": "patient@example.com",       // login email
+  "password": "password"          // login password
+}
+
+{
+  "email": "doctor@example.com",       // login email
+  "password": "password"          // login password
+}
+
+--------------------------------------------------------
+
+`( GET ) http://127.0.0.1:8000/api/appointments/doctor/D001`
+
+body::
+{
+  "email": "crm@example.com",       // login email
+  "password": "password",          // login password
+}
+
+{
+  "email": "doctor@example.com",       // login email
+  "password": "password"          // login password
+}
+
+---------------------------------------------------------
+
+( PUT ) http://127.0.0.1:8000/api/appointments/2
+
+{
+  "email": "doctor@example.com",       // login email
+  "password": "password"          // login password
+}
+
+----------------------------------------------------------
+
+
+`( DELETE ) http://127.0.0.1:8000/api/appointments/2`
+
+{
+  "email": "doctor@example.com",       // login email
+  "password": "password"          // login password
+}
+
+----------------------------------------------------------
+
+`##Task 4:: Audit Trail for Patient Records`
+
+`http://127.0.0.1:8000/api/patients/P-DAQA/audits`
+
+{
+  "email": "admin@example.com",       // login email
+  "password": "password"         // login password
+}
+
+----------------------------------------------------------
+
+## Requirements
+- PHP >= 8.1
+- Composer
+- MySQL or MariaDB
+- Node.js & npm (for assets if needed)
+
+---
+
+## Installation Steps
+
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/<YOUR_USERNAME>/<REPO_NAME>.git
+cd <REPO_NAME>
+
+composer install
+
+php artisan migrate
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan db:seed --class=UserSeeder
+
+php artisan serve
+
+
+
