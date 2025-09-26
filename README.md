@@ -32,6 +32,7 @@ php artisan db:seed --class=UserSeeder
 `(POST) http://127.0.0.1:8000/api/patients`
 
 body::
+```json
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
