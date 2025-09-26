@@ -209,15 +209,26 @@ It includes:
 
 ## Task 5: Azure Deployment Knowledge & Documentation
 
-`1. If you are using Azure SQL Server, then`
+`1.`
 
-`DB_CONNECTION=sqlsrv`
-`DB_HOST=your-sql-server.database.windows.net`
-`DB_PORT=1433`
-`DB_DATABASE=your_database`
-`DB_USERNAME=your_username`
-`DB_PASSWORD=your_password`
+`Database (Azure SQL / MySQL)`
 
+DB_CONNECTION=mysql
+DB_HOST=your-db-server.mysql.database.azure.com
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username@your-db-server
+DB_PASSWORD=your_password
+
+
+`If you are using Azure SQL Server, then`
+
+DB_CONNECTION=sqlsrv
+DB_HOST=your-sql-server.database.windows.net
+DB_PORT=1433
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
 `2. then Azure Storage (for file uploads)`
 
@@ -229,8 +240,32 @@ It includes:
 - AZURE_STORAGE_KEY=your_storage_key
 - AZURE_STORAGE_CONTAINER=your_container_name
 
+`4. Update config/filesystems.php`
+
+'azure' => [
+    'driver'    => 'azure',
+    'name'      => env('AZURE_STORAGE_NAME'),
+    'key'       => env('AZURE_STORAGE_KEY'),
+    'container' => env('AZURE_STORAGE_CONTAINER'),
+],
+
+`Then you can use`
+
+`Storage::disk('azure')->put('file.txt', 'Hello Azure!');`
 
 
+`5. Azure App Service (Deployment)`
+
+`Go to App Service → Configuration → Application settings.`
+
+`Add the same .env variables there`
+
+
+APP_NAME=LaravelApp
+APP_ENV=production
+APP_KEY=base64:xxxxxxxxxxxxxxxxxxxxxx
+APP_DEBUG=false
+APP_URL=https://your-app-service.azurewebsites.net
 
 ---
 
