@@ -29,7 +29,7 @@ It includes:
 `(POST) http://127.0.0.1:8000/api/patients`
 
 - **Body:**
-```json
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
@@ -44,7 +44,7 @@ It includes:
   "emergency_contact_phone": "9876500000",
   "insurance_details": "policy_number INS12345 provider ABC Insurance"
 }
-** ```
+```
 
 ## GET
 
@@ -52,47 +52,50 @@ It includes:
 
 
 - **Body:**
-```json
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
 }
-
-----------------------------------------------------
+```
 
 `(GET) http://127.0.0.1:8000/api/patients?q=9876221210 //q= [phone_number / firstname / last_name]`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
 }
------------------------------------------------------
+```
 
 `( PUT / PATCH ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
   "address": "458 Street, City",
 }
-------------------------------------------------------
+```
 
 `( DELETE ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
 }
--------------------------------------------------------
+```
 
-`##Task3: Appointment Scheduling`
+## Task3: Appointment Scheduling
 
 `( POST ) http://127.0.0.1:8000/api/appointments`
 
-body::
+**body**
+```js
 {
   "email": "admin@example.com",
   "password": "password",
@@ -103,21 +106,23 @@ body::
   "notes": "First appointment for checkup"
 }
 
---------------------------------------------------------
+```
 
 `( GET ) http://127.0.0.1:8000/api/appointments`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
 }
 
---------------------------------------------------------
+```
 
 `( GET ) http://127.0.0.1:8000/api/appointments/patient/P001`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
@@ -133,11 +138,12 @@ body::
   "password": "password"          // login password
 }
 
---------------------------------------------------------
+```
 
 `( GET ) http://127.0.0.1:8000/api/appointments/doctor/D001`
 
-body::
+**body**
+```js
 {
   "email": "crm@example.com",       // login email
   "password": "password",          // login password
@@ -147,38 +153,39 @@ body::
   "email": "doctor@example.com",       // login email
   "password": "password"          // login password
 }
+```
 
----------------------------------------------------------
-
-( PUT ) http://127.0.0.1:8000/api/appointments/2
-
+`( PUT ) http://127.0.0.1:8000/api/appointments/2`
+**body**
+```js
 {
   "email": "doctor@example.com",       // login email
   "password": "password"          // login password
 }
-
-----------------------------------------------------------
+```
 
 
 `( DELETE ) http://127.0.0.1:8000/api/appointments/2`
-
+**body**
+```js
 {
   "email": "doctor@example.com",       // login email
   "password": "password"          // login password
 }
+```
 
-----------------------------------------------------------
-
-`##Task 4:: Audit Trail for Patient Records`
+## Task 4:: Audit Trail for Patient Records
 
 `http://127.0.0.1:8000/api/patients/P-DAQA/audits`
+
+**body**
+```js
 
 {
   "email": "admin@example.com",       // login email
   "password": "password"         // login password
 }
-
-----------------------------------------------------------
+```
 
 ## Requirements
 - PHP >= 8.1
