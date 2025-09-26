@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('patient_id')->unique(); // auto-generated code
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete(); // link to user (optional)
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->enum('gender', ['Male','Female','Other'])->nullable();
             $table->string('phone_number')->unique();

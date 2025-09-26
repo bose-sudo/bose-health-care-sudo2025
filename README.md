@@ -85,7 +85,7 @@ It includes:
 }
 ```
 
-`( PUT / PATCH ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
+`( PUT / PATCH ) http://127.0.0.1:8000/api/patients/P-6OGI`
 
 - **body**
 ```js
@@ -96,7 +96,7 @@ It includes:
 }
 ```
 
-`( DELETE ) http://127.0.0.1:8000/api/patients/e89701d3-6eed-4727-9364-668ffac0e445`
+`( DELETE ) http://127.0.0.1:8000/api/patients/P-6OGI`
 
 - **body**
 ```js
@@ -107,6 +107,7 @@ It includes:
 ```
 
 ## Task3: Appointment Scheduling
+`Schedule a new appointment`
 
 `( POST ) http://127.0.0.1:8000/api/appointments`
 
@@ -115,14 +116,15 @@ It includes:
 {
   "email": "admin@example.com",
   "password": "password",
-  "patient_id": 1,
-  "doctor_id": 1,
+  "patient_id": 1, //primary key
+  "doctor_id": 1, //primary key
   "appointment_date": "2025-09-28",
   "appointment_time": "10:30:00",
   "notes": "First appointment for checkup"
 }
 
 ```
+`List all appointments`
 
 `( GET ) http://127.0.0.1:8000/api/appointments`
 
@@ -134,6 +136,7 @@ It includes:
 }
 
 ```
+`List appointments for a speciffic patient`
 
 `( GET ) http://127.0.0.1:8000/api/appointments/patient/P001`
 
@@ -204,6 +207,33 @@ It includes:
 ```
 ---
 
+## Task 5: Azure Deployment Knowledge & Documentation
+
+`1. If you are using Azure SQL Server, then`
+
+`DB_CONNECTION=sqlsrv`
+`DB_HOST=your-sql-server.database.windows.net`
+`DB_PORT=1433`
+`DB_DATABASE=your_database`
+`DB_USERNAME=your_username`
+`DB_PASSWORD=your_password`
+
+
+`2. then Azure Storage (for file uploads)`
+
+`install this packege - composer require microsoft/azure-storage-blob`
+
+`3. .env`
+
+AZURE_STORAGE_NAME=your_storage_account
+AZURE_STORAGE_KEY=your_storage_key
+AZURE_STORAGE_CONTAINER=your_container_name
+
+
+
+
+---
+
 ## Requirements
 - PHP >= 8.1
 - Composer
@@ -222,8 +252,6 @@ git clone https://github.com/<YOUR_USERNAME>/<REPO_NAME>.git
 cd <REPO_NAME>
 
 composer install
-
-php artisan migrate
 
 php artisan key:generate
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -63,7 +64,7 @@ class PatientController extends Controller
             'date_of_birth'           => 'required|date',
             'gender'                  => 'required|in:Male,Female,Other',
             'phone_number'            => 'required|string|max:20|unique:patients,phone_number',
-            'patient_email'           => 'nullable|email|unique:patients,email',
+            'patient_email'           => 'nullable|email|unique:patients,patient_email',
             'address'                 => 'nullable|string',
             'emergency_contact_name'  => 'nullable|string|max:100',
             'emergency_contact_phone' => 'nullable|string|max:20',
@@ -74,8 +75,11 @@ class PatientController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
+        $patient_user_id = User::where('role', 'Patient')->pluck('id')->first();
+
         $data = $validator->validated();
         $data['patient_id'] = 'P-' . strtoupper(Str::random(4));
+        $data['user_id'] = $patient_user_id;
 
         $patient = Patient::create($data);
 
@@ -142,7 +146,7 @@ class PatientController extends Controller
             'date_of_birth'           => 'sometimes|required|date',
             'gender'                  => 'sometimes|required|in:Male,Female,Other',
             'phone_number'            => 'sometimes|required|string|max:20|unique:patients,phone_number,' . $patient->id,
-            'patient_email'           => 'nullable|email|unique:patients,email,' . $patient->id,
+            'patient_email'           => 'nullable|email|unique:patients,patient_email,' . $patient->id,
             'address'                 => 'nullable|string',
             'emergency_contact_name'  => 'nullable|string|max:100',
             'emergency_contact_phone' => 'nullable|string|max:20',

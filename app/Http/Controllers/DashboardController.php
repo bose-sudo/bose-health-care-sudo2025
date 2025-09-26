@@ -8,22 +8,22 @@ class DashboardController extends Controller
 {
     public function admin() 
     { 
-        return view('dashboards.admin');
+        return view('admin.dashboard');
     }
 
     public function crm() 
     { 
-        return view('dashboards.crm');
+        return view('admin.dashboard');
     }
 
     public function doctor() 
     { 
-        return view('dashboards.doctor'); 
+        return view('admin.dashboard');
     }
 
     public function patient() 
     { 
-        return view('dashboards.patient'); 
+        return view('admin.dashboard');
     }
 
     public function lab() 

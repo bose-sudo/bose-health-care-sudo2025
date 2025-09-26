@@ -27,23 +27,6 @@ class UserSeeder extends Seeder
             'role' => 'CRM Agent'
         ]);
 
-        $doctorUser = User::create([
-            'name' => 'Dr. Roy',
-            'email' => 'doctor@example.com',
-            'password' => Hash::make('password'),
-            'role' => 'Doctor',
-        ]);
-
-        Doctor::create([
-            'doctor_id'     => 'D001',
-            'user_id'       => $doctorUser->id,
-            'first_name'    => 'Dr.',
-            'last_name'     => 'Roy',
-            'specialization'=> 'Cardiology',
-            'phone'         => '9876543210',
-            'email'         => 'doctor@example.com',
-        ]);
-
         $patientUser = User::create([
             'name' => 'John Doe',
             'email' => 'patient@example.com',
@@ -59,8 +42,25 @@ class UserSeeder extends Seeder
             'date_of_birth' => '1990-01-01',
             'gender' => 'Male',
             'phone_number' => '1234567890',
-            'email' => 'patient@example.com',
+            'patient_email' => 'patient@example.com',
             'address' => 'Kolkata',
+        ]);
+
+        $doctorUser = User::create([
+            'name' => 'Dr. Roy',
+            'email' => 'doctor@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'Doctor',
+        ]);
+
+        Doctor::create([
+            'doctor_id'     => 'D001',
+            'user_id'       => $doctorUser->id,
+            'first_name'    => 'Dr.',
+            'last_name'     => 'Roy',
+            'specialization'=> 'Cardiology',
+            'phone'         => '9876543210',
+            'email'         => 'doctor@example.com',
         ]);
 
         User::create([

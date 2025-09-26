@@ -19,6 +19,7 @@ class PatientAuditController extends Controller
     {
         
         $credentials = $request->only('email', 'password');
+        
         if (!Auth::attempt($credentials)) {
             return response()->json(['message' => 'Invalid email or password'], 401);
         }

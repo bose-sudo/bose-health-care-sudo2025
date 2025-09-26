@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('patient_audits', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('patient_id');
-            $table->text('patient_unique_id');
-            $table->enum('action', ['created', 'updated', 'deleted']);
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('patient_id')->nullable();
+            $table->text('patient_unique_id')->nullable();
+            $table->enum('action', ['created', 'updated', 'deleted'])->nullable();
             $table->text('old_values')->nullable();
             $table->text('new_values')->nullable();
             $table->string('ip_address')->nullable();

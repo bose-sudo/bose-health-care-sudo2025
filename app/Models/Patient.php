@@ -18,7 +18,7 @@ class Patient extends Model
         'date_of_birth',
         'gender',
         'phone_number',
-        'email',
+        'patient_email',
         'address',
         'emergency_contact_name',
         'emergency_contact_phone',
@@ -51,5 +51,15 @@ class Patient extends Model
             'new_values' => $newValues ? json_encode($newValues) : null,
             'ip_address' => request()->ip(),
         ]);
+    }
+
+    public function user() 
+    { 
+        return $this->belongsTo(User::class); 
+    }
+
+    public function appointments() 
+    { 
+        return $this->hasMany(Appointment::class); 
     }
 }
