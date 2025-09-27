@@ -28,7 +28,7 @@ class DashboardController extends Controller
 
     public function lab() 
     { 
-        return view('admin.dashboard');
+        return view('admin.dashboard'); 
     }
 
 }
