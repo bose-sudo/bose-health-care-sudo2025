@@ -5,7 +5,27 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (!auth()->check()) {
+        return redirect('/login');
+    }
+
+    $user = auth()->user();
+
+    $redirectMap = [
+        'Admin'       => '/admin/dashboard',
+        'CRM Agent'   => '/crm/dashboard',
+        'Doctor'      => '/doctor/dashboard',
+        'Patient'     => '/patient/dashboard',
+        'Lab Manager' => '/lab/dashboard',
+    ];
+
+    foreach ($redirectMap as $role => $route) {
+        if ($user->hasRole($role)) {
+            return redirect()->intended($route);
+        }
+    }
+
+    return redirect('/dashboard');
 });
 
 // Route::get('/dashboard', function () {
