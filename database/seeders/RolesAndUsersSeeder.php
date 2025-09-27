@@ -22,8 +22,9 @@ class RolesAndUsersSeeder extends Seeder
 
         // create Admin
         $admin = User::firstOrCreate(['email'=>'admin@example.com'], [
-            'name'=>'Admin User',
+            'name' => 'Admin User',
             'password'=>bcrypt('password'),
+            'role' => 'Admin'
         ]);
         $admin->assignRole('Admin');
 
@@ -31,6 +32,7 @@ class RolesAndUsersSeeder extends Seeder
         $crm = User::firstOrCreate(['email'=>'crm@example.com'], [
             'name'=>'CRM Agent',
             'password'=>bcrypt('password'),
+            'role' => 'CRM Agent'
         ]);
         $crm->assignRole('CRM Agent');
 
@@ -38,11 +40,13 @@ class RolesAndUsersSeeder extends Seeder
         $docUser = User::firstOrCreate(['email'=>'doctor@example.com'], [
             'name'=>'Dr. John',
             'password'=>bcrypt('password'),
+            'role' => 'Doctor',
         ]);
         $docUser->assignRole('Doctor');
 
         // create a doctor record and link
         $doctor = Doctor::create([
+            'doctor_id'     => 'D001',
             'user_id' => $docUser->id,
             'first_name' => 'John',
             'last_name' => 'Doe',
@@ -54,21 +58,24 @@ class RolesAndUsersSeeder extends Seeder
         $patientUser = User::firstOrCreate(['email'=>'patient@example.com'], [
             'name'=>'Patient One',
             'password'=>bcrypt('password'),
+            'role' => 'Patient',
         ]);
         $patientUser->assignRole('Patient');
 
         $patient = Patient::create([
             'user_id' => $patientUser->id,
+            'patient_id' => 'P001',
             'first_name' => 'Patient',
             'last_name' => 'One',
             'phone_number' => '9876543210',
-            'email' => 'patient@example.com',
+            'patient_email' => 'patient@example.com',
         ]);
 
         // Lab Manager
         $lab = User::firstOrCreate(['email'=>'lab@example.com'], [
             'name'=>'Lab Manager',
             'password'=>bcrypt('password'),
+            'role' => 'Lab Manager'
         ]);
         $lab->assignRole('Lab Manager');
     }

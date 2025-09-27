@@ -178,9 +178,15 @@ It includes:
 - **body**
 ```js
 {
-  "email": "doctor@example.com",       // login email
-  "password": "password"          // login password
+  "email": "doctor@example.com",
+  "password": "password",
+  "patient_id": 2, //primary key
+  "doctor_id": 1, //primary key
+  "appointment_date": "2025-09-28",
+  "appointment_time": "10:30:00",
+  "notes": "second appointment for checkup"
 }
+
 ```
 
 
@@ -195,7 +201,7 @@ It includes:
 
 ## Task 4:: Audit Trail for Patient Records
 
-`http://127.0.0.1:8000/api/patients/P-DAQA/audits`
+`( GET ) http://127.0.0.1:8000/api/patients/P-DAQA/audits`
 
 - **body**
 ```js
@@ -295,7 +301,9 @@ php artisan key:generate
 
 php artisan migrate
 
-php artisan db:seed --class=UserSeeder
+php artisan migrate:refesh
+
+php artisan db:seed --class=RolesAndUsersSeeder
 
 php artisan serve
 

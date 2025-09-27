@@ -31,19 +31,18 @@ class AuthenticatedSessionController extends Controller
         $user = $request->user();
 
         // Role wise redirect
-        switch ($user->role) {
-            case 'Admin':
-                return redirect()->intended('/admin/dashboard');
-            case 'CRM Agent':
-                return redirect()->intended('/crm/dashboard');
-            case 'Doctor':
-                return redirect()->intended('/doctor/dashboard');
-            case 'Patient':
-                return redirect()->intended('/patient/dashboard');
-            case 'Lab Manager':
-                return redirect()->intended('/lab/dashboard');
-            default:
-                return redirect()->intended('/dashboard');
+        if ($user->hasRole('Admin')) {
+            return redirect()->intended('/admin/dashboard');
+        } elseif ($user->hasRole('CRM Agent')) {
+            return redirect()->intended('/crm/dashboard');
+        } elseif ($user->hasRole('Doctor')) {
+            return redirect()->intended('/doctor/dashboard');
+        } elseif ($user->hasRole('Patient')) {
+            return redirect()->intended('/patient/dashboard');
+        } elseif ($user->hasRole('Lab Manager')) {
+            return redirect()->intended('/lab/dashboard');
+        } else {
+            return redirect()->intended('/dashboard');
         }
 
         // return redirect()->intended(route('dashboard', absolute: false));
